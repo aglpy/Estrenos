@@ -1,3 +1,11 @@
+#******************************************************************************
+#Interfaz gráfica para gestionar las películas guardadas por Trailers.py
+#Un doble click en la película abre el link asociado
+#El botón > permite asociar una fecha al nombre de una película
+#@angalaagl
+#https://github.com/aglpy
+#https://anaconda.org/angala
+#******************************************************************************
 import glob
 import webbrowser
 import shutil
@@ -133,7 +141,6 @@ class TrailersReader(QMainWindow):
 		else:
 			self.calendario.show()
 		self.iscalendarioshow = not self.iscalendarioshow
-
 
 
 if __name__ == "__main__":
