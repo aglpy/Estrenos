@@ -63,8 +63,6 @@ webpage alow the web scraping in his web.
 This script is written to be combined with `WinInicioApp`_ and make it executable
 at the start of the system.
 
-It will soon be included the interface necessary to visualize the files generated.
-
 The application `TrailersReader.py`_ gives a graphical interface to manage the files
 generated. A double click on the film will open the link asociated to it,
 it is posible to set pending film in a file named "000-00-0.txt",
