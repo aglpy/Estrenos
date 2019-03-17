@@ -14,46 +14,46 @@ import urllib.request
 
 from bs4 import BeautifulSoup
 
-dir = "D:\DATA\PS\Trailers" #Directorio actual
+dir = "D:\DATA\PS\Trailers"
 
-hoy_arch = dir + "/hoy.txt" #Archivo para controlar una única ejecución diaria
-directorio = dir + "./Trailers/" #Carpeta donde se guardarán los links
-link_estrenos = "Look at docs" #Pagina donde están los estrenos de España
-link_root = "Look at docs" #Usado para obtener el link completo de cada peli
-parser = "lxml" #Parser que usa BeautifulSoup
+hoy_arch = dir + "/hoy.txt"
+directorio = dir + "./Trailers/"
+link_estrenos = "Look at docs"
+link_root = "Look at docs"
+parser = "lxml"
 
-def dias(body): #Devuelve un array con los dias disponibles en body
+def dias(body):
 	return body.find_all("div", attrs={"id":"main-wrapper-rdcat"})
 
-def fecha(dia): #Devuelve la fecha del dia
+def fecha(dia):
 	return dia.find("div", attrs={"class":"rdate-cat"})["id"]
 
-def pelis(dia): #Devuelve un array con todas las pelis en el dia dado
+def pelis(dia):
 	return dia.find_all("div", attrs={"class":"top-movie"})
 
-def titulo(peli): #Devuelve el titulo de la peli
+def titulo(peli):
 	return peli.find("div", attrs={"class":"mc-right"}).find("h3").find("a")["title"]
 	
-def link(peli): #Devuelve el link completo de la peli
+def link(peli):
 	return link_root +\
 	peli.find("div", attrs={"class":"mc-right"}).find("h3").find("a")["href"]
 
-with open(hoy_arch, "r") as arch: #Lee el ultimo dia ejecutado
+with open(hoy_arch, "r") as arch:
 	ulti_dia = arch.read()
-if ulti_dia != str(datetime.date.today()): #Solo se ejecuta si nos e ha ejecutado hoy
-	with open(hoy_arch, "w") as arch: #Se guarda hoy como ultimo dia ejecutado
+if ulti_dia != str(datetime.date.today()):
+	with open(hoy_arch, "w") as arch:
 		arch.write(str(datetime.date.today()))
 	
-	pag = urllib.request.urlopen(link_estrenos) #Obtenemos el html
-	body = BeautifulSoup(pag, parser) #Creamos el parseable
+	pag = urllib.request.urlopen(link_estrenos)
+	body = BeautifulSoup(pag, parser)
 
-	for dia in dias(body): #Para cada dia que aparezca en la pagina
+	for dia in dias(body):
 		print("\n" + fecha(dia) + "\n")
-		with open(directorio + fecha(dia) + ".txt", "w") as arch: #Creamos un archivo con la fecha
-			for peli in pelis(dia): #Para cada peli en ese dia
+		with open(directorio + fecha(dia) + ".txt", "w") as arch:
+			for peli in pelis(dia):
 				print(titulo(peli))
-				arch.write(titulo(peli) + "\n") #Escribimos el nombre de la peli en el archivo
-				arch.write("	" + link(peli) + "\n") #Escribimos el link tabulado en el archivo
-				arch.write("\n") #Dejamos un espacio tras cada peli
+				arch.write(titulo(peli) + "\n")
+				arch.write("	" + link(peli) + "\n")
+				arch.write("\n")
 	print("\nFIN")
 	time.sleep(5)
