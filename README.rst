@@ -29,13 +29,11 @@ dicha página permita el scraping de su web antes de usarla.
 Este script está escrito para ser combinado con `WinInicioApp`_ y hacer que se ejecute
 al inicio del sistema.
 
-Pronto se incluirá en este proyecto la interfaz necesaria para la visualización
-de los archivos generados.
-
-.. _`Trailers.py`: https://github.com/aglpy/Estrenos/tree/master/Trailers.py
-.. _`hoy.txt`: https://github.com/aglpy/Estrenos/tree/master/hoy.txt
-.. _`Trailers`: https://github.com/aglpy/Estrenos/tree/master/Trailers
-.. _`WinInicioApp`: https://github.com/aglpy/utilities/tree/master/WinInicioApp
+La aplicación `TrailersReader.py`_ proporciona una interfaz gráfica para gestionar
+los archivos generados. Un doble click en la película abre el link asociado a ella,
+también es posible marcar películas como pendientes en un archivo "000-00-0.txt",
+además es posible asociar una fecha a la película seleccionándola y eligiendo una
+fecha en el botón ">".
 
 ENG
 ---
@@ -67,7 +65,14 @@ at the start of the system.
 
 It will soon be included the interface necessary to visualize the files generated.
 
+The application `TrailersReader.py`_ gives a graphical interface to manage the files
+generated. A double click on the film will open the link asociated to it,
+it is posible to set pending film in a file named "000-00-0.txt",
+you can asociate a date to a film selecting the film and chosing a date in the
+button ">".
+
 .. _`Trailers.py`: https://github.com/aglpy/Estrenos/tree/master/Trailers.py
 .. _`hoy.txt`: https://github.com/aglpy/Estrenos/tree/master/hoy.txt
 .. _`Trailers`: https://github.com/aglpy/Estrenos/tree/master/Trailers
 .. _`WinInicioApp`: https://github.com/aglpy/utilities/tree/master/WinInicioApp
+.. _`TrailersReader.py`: https://github.com/aglpy/Estrenos/tree/master/TrailersReader.py
