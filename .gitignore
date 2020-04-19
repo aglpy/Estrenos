@@ -1,0 +1,4 @@
+
+.venv/*
+aws_lambda/*
+.vscode/settings.json
